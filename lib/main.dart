@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return new Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).primaryColorDark,
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             IconButton(icon: Icon(Icons.menu), onPressed: () {},),
             IconButton(icon: Icon(Icons.favorite), onPressed: () {},),
-            IconButton(icon: Icon(null), onPressed: (){},),
+            IconButton(icon: Icon(null), onPressed: null,),
             IconButton(icon: Icon(Icons.public), onPressed: () {},),
             IconButton(icon: Icon(Icons.person), onPressed: () {},),
           ],
