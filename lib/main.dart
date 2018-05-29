@@ -8,26 +8,22 @@ class MyApp extends StatelessWidget {
         primaryColorLight: Colors.white,
         primaryColorDark: Colors.grey[200],
         accentColor: Colors.blueGrey[900],
+        brightness: Brightness.light,
         iconTheme: new IconThemeData(
           color: Colors.blueGrey[900]
         )
       );
 
-  final ThemeData blueTheme = new ThemeData(
-        primaryColor: Colors.grey[50],
-        primaryColorLight: Colors.white,
-        primaryColorDark: Colors.grey[200],
-        accentColor: Colors.blue[500],
+  final ThemeData darkTheme = new ThemeData(
+        primaryColor: Colors.blueGrey[800],
+        primaryColorLight: Colors.blueGrey[500],
+        primaryColorDark: Colors.blueGrey[900],
+        accentColor: Colors.white,
+        brightness: Brightness.dark,
         iconTheme: new IconThemeData(
-          color: Colors.blue[500]
+          color: Colors.white
         )
       );
-  // ThemeData darkTheme = new ThemeData(
-  //       primaryColorDark: Colors.grey[900],
-  //       primaryColorLight: Colors.grey[700]
-  //       primaryColor: Colors.blueGrey[900],
-  //       accentColor: Colors.white
-  //     );
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -111,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Theme.of(context).primaryColor,
         hasNotch: true,
         child: new Row(
           mainAxisSize: MainAxisSize.max,
