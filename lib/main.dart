@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
   final ThemeData darkTheme = new ThemeData(
         primaryColor: Colors.blueGrey[800],
-        primaryColorLight: Colors.blueGrey[500],
+        primaryColorLight: Colors.blueGrey[700],
         primaryColorDark: Colors.blueGrey[900],
         accentColor: Colors.white,
         brightness: Brightness.dark,
