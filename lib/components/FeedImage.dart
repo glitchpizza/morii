@@ -20,18 +20,19 @@ class FeedImageState extends State<FeedImage> {
 
     Widget imageCaption = Container(
       padding: EdgeInsets.all(8.0),
-      height: 100.0,
-      color: Theme.of(context).primaryColorLight,
-      child: new Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      color: Theme.of(context).primaryColor,
+      child: Row(
         children: <Widget>[
-          Text(
-            "@johnny_karate@pawnee.social"
-          ),
-          Expanded(
-            child: Text(
-              "This is a rad caption. Cool beans!"
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "@johnny_karate@pawnee.social"
+              ),
+              Text(
+                  "This is a rad caption. Cool beans!"
+                ),
+            ],
           )
         ],
       )
