@@ -82,7 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           children: <Widget>[
-            new FeedImage()
+            new FeedImage(
+              username: 'pizza_suplex',
+              avatarUrl: 'https://pbs.twimg.com/profile_images/943615961193697283/_xPN6A93_400x400.jpg',
+              imageUrl: 'https://01.keybase.pub/screenshots/plsrt.png',
+              instance: 'polygon.zone',
+              caption: '@NintendoAmerica Wow. Can\'t believe it\'s been 10 eyars since you became an angel. You loved Toad. Please Retweet.',
+            ),
           ],
         ),
       ),

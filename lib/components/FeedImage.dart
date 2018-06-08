@@ -1,6 +1,28 @@
 import 'package:flutter/material.dart';
 
 class FeedImage extends StatefulWidget {
+  /*
+   * NB: Much of this will need to be changed
+   * once there's a real API with modeled objects.
+   * 
+   * THESE ARE PLACEHOLDERS 
+   * DO NOT RELY ON THEM TOO MUCH
+   */
+  const FeedImage({
+    Key key,
+    @required this.imageUrl,
+    @required this.avatarUrl,
+    @required this.username,
+    @required this.instance,
+    this.caption
+  }) : super(key: key);
+
+  final String imageUrl;
+  final String avatarUrl;
+  final String username;
+  final String instance;
+  final String caption;
+
   @override
   createState() => FeedImageState();
 }
