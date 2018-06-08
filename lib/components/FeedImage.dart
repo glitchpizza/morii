@@ -64,7 +64,12 @@ class FeedImageState extends State<FeedImage> {
                   username,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(caption),
+                RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    text: caption
+                  )
+                ),
               ]
             ),
           )
