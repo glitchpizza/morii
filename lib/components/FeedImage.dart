@@ -76,6 +76,22 @@ class FeedImageState extends State<FeedImage> {
       );
     }
 
+    Container buildActionRow() {
+      return Container(
+        padding: EdgeInsets.all(8.0),
+        color: Theme.of(context).primaryColorLight,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Icon(Icons.favorite_border, size: 20.0,),
+            Icon(Icons.chat_bubble_outline, size: 20.0,),
+            Icon(Icons.share, size: 20.0,),
+            Icon(Icons.bookmark_border, size: 20.0,)
+          ],
+        )
+      );
+    }
+
     return Column(
       children: <Widget>[
         buildUserHeader(
