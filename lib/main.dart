@@ -25,7 +25,17 @@ class MyApp extends StatelessWidget {
           color: Colors.white
         )
       );
-  // This widget is the root of your application.
+    final ThemeData oledTheme = new ThemeData(
+        primaryColor: Colors.black,
+        primaryColorLight: Colors.blueGrey[900],
+        primaryColorDark: Colors.black,
+        accentColor: Colors.white,
+        brightness: Brightness.dark,
+        iconTheme: new IconThemeData(
+          color: Colors.white
+        )
+    );
+  
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
