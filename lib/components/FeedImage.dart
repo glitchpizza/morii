@@ -59,6 +59,7 @@ class FeedImageState extends State<FeedImage> {
         padding: EdgeInsets.all(8.0),
         color: Theme.of(context).primaryColorLight,
         child: Container(
+            width: MediaQuery.of(context).size.width,
             child: Wrap(
               children: <Widget> [
                 Text(
