@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class FeedImage extends StatefulWidget {
   /*
@@ -38,7 +39,7 @@ class FeedImageState extends State<FeedImage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             CircleAvatar(
-              backgroundImage: NetworkImage(avatarUrl),
+              backgroundImage: CachedNetworkImageProvider(avatarUrl),
               radius: 16.0,
             ),
             Padding(
@@ -56,7 +57,7 @@ class FeedImageState extends State<FeedImage> {
     Container buildImageCaption({String username, String caption}) {
       return Container(
         padding: EdgeInsets.all(8.0),
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).primaryColorLight,
         child: Container(
             child: Wrap(
               children: <Widget> [
@@ -95,17 +96,18 @@ class FeedImageState extends State<FeedImage> {
     return Column(
       children: <Widget>[
         buildUserHeader(
-          username: "@pizza_suplex",
-          avatarUrl: "https://pbs.twimg.com/profile_images/943615961193697283/_xPN6A93_400x400.jpg"
+          username: "@${widget.username}",
+          avatarUrl: widget.avatarUrl
         ),
-        Image.network(
-          'https://01.keybase.pub/screenshots/plsrt.png',
-          fit: BoxFit.cover 
+        CachedNetworkImage(
+          imageUrl: widget.imageUrl,
+          fit: BoxFit.cover
         ),
         buildImageCaption(
-          username: "@pizza_suplex@polygon.zone",
-          caption: "@NintendoAmerica Wow. Can't believe it's been 10 eyars since you became an angel. You loved Toad. Please Retweet."
-        )
+          username: "@${widget.username}@${widget.instance}",
+          caption: widget.caption ?? "" 
+        ),
+        buildActionRow()
       ],
     );
   }
