@@ -1,5 +1,25 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'components/FeedImage.dart';
+import 'package:http/http.dart' as http;
+import 'package:morii/util/PostModel.dart';
+
+import 'package:morii/components/FeedImage.dart';
+
+final String accessToken = "ACCESS_TOKEN_HERE"; // TODO: Put this into an OAath flow
+
+Future<List<PostModel>> fetchPost() async {
+  final response =
+      await http.get('https://photog.social/api/v1/timelines/public/?only_media=true&local=false&limit=40', headers: {
+        "Authorization": "Bearer $accessToken"
+      });
+  final List<dynamic> responseJson = json.decode(response.body);
+
+  return responseJson.map((post) {
+    return new PostModel.fromJson(post);
+  }).where((post) => post.mediaTypes == 'image' && !post.sensitive).toList();
+}
 
 void main() => runApp(new MyApp());
 
