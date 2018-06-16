@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
       );
   
     final ThemeData oledTheme = new ThemeData(
-        primaryColor: Colors.black,
-        primaryColorLight: Colors.blueGrey[900],
+        primaryColor: Colors.blueGrey[900],
+        primaryColorLight: Colors.black,
         primaryColorDark: Colors.black,
         accentColor: Colors.white,
         brightness: Brightness.dark,
