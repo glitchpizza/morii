@@ -93,12 +93,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Theme.of(context).primaryColorDark,
-      body: new Center(
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: new ListView(
+        child: FutureBuilder<List<PostModel>>(
+          future: fetchPost(),
+          builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView(
           // Column is also layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -113,23 +117,18 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           padding: EdgeInsetsDirectional.only(bottom: 64.0, top: 24.0),
-          children: <Widget>[
-            FeedImage(
-              username: 'pizza_suplex',
-              avatarUrl: 'https://pbs.twimg.com/profile_images/943615961193697283/_xPN6A93_400x400.jpg',
-              imageUrl: 'https://01.keybase.pub/screenshots/plsrt.png',
-              instance: 'polygon.zone',
-              caption: '@NintendoAmerica Wow. Can\'t believe it\'s been 10 eyars since you became an angel. You loved Toad. Please Retweet.',
-            ),
-            FeedImage(
-              username: 'jeff_goldblum',
-              instance: 'jeffgoldbl.um',
-              avatarUrl: 'https://01.keybase.pub/morii/goldblum/avatar.png',
-              imageUrl: 'https://01.keybase.pub/morii/goldblum/post.jpg',
-              caption: 'feelin cute today, might delete later',
+                  children: snapshot.data.map((post) {
+                    return FeedImage(post: post);
+                  }).toList()
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+
+              // By default, show a loading spinner
+              return CircularProgressIndicator();
+            },
             )
-          ],
-        ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Theme.of(context).primaryColor,
