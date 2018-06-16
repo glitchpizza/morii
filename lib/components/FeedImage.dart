@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:morii/util/PostModel.dart';
+import 'package:morii/components/LoadingImage.dart';
 
 class FeedImage extends StatefulWidget {
   /*
@@ -11,18 +13,10 @@ class FeedImage extends StatefulWidget {
    */
   const FeedImage({
     Key key,
-    @required this.imageUrl,
-    @required this.avatarUrl,
-    @required this.username,
-    @required this.instance,
-    this.caption
+    @required this.post
   }) : super(key: key);
 
-  final String imageUrl;
-  final String avatarUrl;
-  final String username;
-  final String instance;
-  final String caption;
+  final PostModel post;
 
   @override
   createState() => FeedImageState();
@@ -97,16 +91,17 @@ class FeedImageState extends State<FeedImage> {
     return Column(
       children: <Widget>[
         buildUserHeader(
-          username: "@${widget.username}",
-          avatarUrl: widget.avatarUrl
+          username: "@${widget.post.username}",
+          avatarUrl: widget.post.avatarUrl
         ),
         CachedNetworkImage(
-          imageUrl: widget.imageUrl,
+          imageUrl: widget.post.mediaUrls, // TODO: support multiple attachments
+          placeholder: LoadingImage(),
           fit: BoxFit.cover
         ),
         buildImageCaption(
-          username: "@${widget.username}@${widget.instance}",
-          caption: widget.caption ?? "" 
+          username: "@${widget.post.accountName}",
+          caption: widget.post.caption ?? "" 
         ),
         buildActionRow()
       ],
