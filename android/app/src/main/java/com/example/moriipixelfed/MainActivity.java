@@ -1,4 +1,4 @@
-package com.example.moriipixelfed;
+package pizza.glitch.morii;
 
 import android.os.Bundle;
 
