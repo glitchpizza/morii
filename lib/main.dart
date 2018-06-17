@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         iconTheme: new IconThemeData(
           color: Colors.blueGrey[900]
-        )
+        ),
+        fontFamily: 'Source Sans Pro'
       );
 
   final ThemeData darkTheme = new ThemeData(

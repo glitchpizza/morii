@@ -40,6 +40,15 @@ flutter:
   assets:
     - images/walking.png
     - images/spacey_1.png
+  
+  fonts:
+    - family: Source Sans Pro
+      fonts:
+        - asset: fonts/SourceSansPro-Regular.ttf
+        - asset: fonts/SourceSansPro-Italic.ttf
+          style: italic
+        - asset: fonts/SourceSansPro-SemiBold.ttf
+          weight: 700
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
