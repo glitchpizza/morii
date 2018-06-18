@@ -34,7 +34,7 @@ class FeedImageState extends State<FeedImage> {
           children: <Widget>[
             CircleAvatar(
               backgroundImage: CachedNetworkImageProvider(avatarUrl),
-              radius: 16.0,
+              radius: 20.0,
             ),
             Padding(
               padding: EdgeInsets.only(left: 8.0),
@@ -91,7 +91,7 @@ class FeedImageState extends State<FeedImage> {
     return Column(
       children: <Widget>[
         buildUserHeader(
-          username: "@${widget.post.username}",
+          username: "${widget.post.username}",
           avatarUrl: widget.post.avatarUrl
         ),
         CachedNetworkImage(
