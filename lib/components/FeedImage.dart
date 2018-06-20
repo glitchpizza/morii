@@ -48,6 +48,12 @@ class FeedImageState extends State<FeedImage> {
       );
     }
 
+    // TODO: put this method in its own file
+    String parseCaption(String rawCaption) {
+      var document = parseFragment(rawCaption);
+      return document.text;
+    }
+
     Container buildImageCaption({String username, String caption}) {
       return Container(
         padding: EdgeInsets.all(8.0),
@@ -63,7 +69,7 @@ class FeedImageState extends State<FeedImage> {
                 RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
-                    text: caption
+                    text: parseCaption(caption)
                   )
                 ),
               ]
