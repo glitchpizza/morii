@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.grey[50],
         primaryColorLight: Colors.white,
         primaryColorDark: Colors.grey[200],
-        accentColor: Colors.blueGrey[900],
+        accentColor: Colors.black,
         brightness: Brightness.light,
         iconTheme: new IconThemeData(
           color: Colors.blueGrey[900]
