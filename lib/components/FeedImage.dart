@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:morii/util/PostModel.dart';
 import 'package:morii/components/LoadingImage.dart';
+import 'package:html/parser.dart' show parseFragment;
+import 'package:html/dom.dart' as DOM;
 
 class FeedImage extends StatefulWidget {
-  /*
-   * NB: Much of this will need to be changed
-   * once there's a real API with modeled objects.
-   * 
-   * THESE ARE PLACEHOLDERS 
-   * DO NOT RELY ON THEM TOO MUCH
-   */
   const FeedImage({
     Key key,
     @required this.post
