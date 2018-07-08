@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:morii/models/Post.dart';
 
-import 'package:morii/components/FeedImage.dart';
+import 'package:morii/components/Timeline.dart';
 
 final String accessToken = "ACCESS_TOKEN_HERE"; // TODO: Put this into an OAath flow
 
@@ -99,37 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: FutureBuilder<List<Post>>(
-          future: fetchPost(),
-          builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView(
-                  // Column is also layout widget. It takes a list of children and
-                  // arranges them vertically. By default, it sizes itself to fit its
-                  // children horizontally, and tries to be as tall as its parent.
-                  //
-                  // Invoke "debug paint" (press "p" in the console where you ran
-                  // "flutter run", or select "Toggle Debug Paint" from the Flutter tool
-                  // window in IntelliJ) to see the wireframe for each widget.
-                  //
-                  // Column has various properties to control how it sizes itself and
-                  // how it positions its children. Here we use mainAxisAlignment to
-                  // center the children vertically; the main axis here is the vertical
-                  // axis because Columns are vertical (the cross axis would be
-                  // horizontal).
-                  padding: EdgeInsetsDirectional.only(bottom: 64.0, top: 24.0),
-                  children: snapshot.data.map((post) {
-                    return FeedImage(post: post);
-                  }).toList()
-                );
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
-
-              // By default, show a loading spinner
-              return CircularProgressIndicator();
-            },
-        )
+        child: Timeline(posts: fetchPost())
       ),
       bottomNavigationBar: BottomAppBar(
         color: Theme.of(context).primaryColor,
