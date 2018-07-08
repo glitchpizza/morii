@@ -3,13 +3,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:morii/util/PostModel.dart';
+import 'package:morii/models/Post.dart';
 
 import 'package:morii/components/FeedImage.dart';
 
 final String accessToken = "ACCESS_TOKEN_HERE"; // TODO: Put this into an OAath flow
 
-Future<List<PostModel>> fetchPost() async {
+Future<List<Post>> fetchPost() async {
   final response =
       await http.get('https://photog.social/api/v1/timelines/public/?only_media=true&local=false&limit=40', headers: {
         "Authorization": "Bearer $accessToken"
@@ -17,8 +17,8 @@ Future<List<PostModel>> fetchPost() async {
   final List<dynamic> responseJson = json.decode(response.body);
 
   return responseJson.map((post) {
-    return new PostModel.fromJson(post);
-  }).where((post) => post.mediaTypes == 'image' && !post.sensitive).toList();
+    return new Post.fromJson(post);
+  }).where((post) => post.mediaTypes == 'image' && !post.isSensitive).toList();
 }
 
 void main() => runApp(new MyApp());
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           color: Colors.white
         )
     );
-  
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -99,25 +99,25 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: FutureBuilder<List<PostModel>>(
+        child: FutureBuilder<List<Post>>(
           future: fetchPost(),
           builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug paint" (press "p" in the console where you ran
-          // "flutter run", or select "Toggle Debug Paint" from the Flutter tool
-          // window in IntelliJ) to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          padding: EdgeInsetsDirectional.only(bottom: 64.0, top: 24.0),
+                  // Column is also layout widget. It takes a list of children and
+                  // arranges them vertically. By default, it sizes itself to fit its
+                  // children horizontally, and tries to be as tall as its parent.
+                  //
+                  // Invoke "debug paint" (press "p" in the console where you ran
+                  // "flutter run", or select "Toggle Debug Paint" from the Flutter tool
+                  // window in IntelliJ) to see the wireframe for each widget.
+                  //
+                  // Column has various properties to control how it sizes itself and
+                  // how it positions its children. Here we use mainAxisAlignment to
+                  // center the children vertically; the main axis here is the vertical
+                  // axis because Columns are vertical (the cross axis would be
+                  // horizontal).
+                  padding: EdgeInsetsDirectional.only(bottom: 64.0, top: 24.0),
                   children: snapshot.data.map((post) {
                     return FeedImage(post: post);
                   }).toList()
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // By default, show a loading spinner
               return CircularProgressIndicator();
             },
-            )
+        )
       ),
       bottomNavigationBar: BottomAppBar(
         color: Theme.of(context).primaryColor,
