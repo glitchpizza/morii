@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:morii/models/Post.dart';
 
 import 'package:morii/components/Timeline.dart';
+import 'package:morii/components/BottomNav.dart';
+
 final String accessToken = "ACCESS_TOKEN_HERE"; // TODO: Put this into an OAath flow
 
 Future<List<Post>> fetchPosts() async {
@@ -51,21 +53,7 @@ class _PublicTimelineState extends State<PublicTimeline> {
       body: Center(
         child: Timeline(posts: fetchPosts()) // Create a timeline with public TL posts
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).primaryColor,
-        hasNotch: true,
-        child: new Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            IconButton(icon: Icon(Icons.menu), onPressed: () {},),
-            IconButton(icon: Icon(Icons.favorite), onPressed: () {},),
-            IconButton(icon: Icon(null), onPressed: null,),
-            IconButton(icon: Icon(Icons.public), onPressed: () {},),
-            IconButton(icon: Icon(Icons.person), onPressed: () {},),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomNav(),
       floatingActionButtonLocation: 
         FloatingActionButtonLocation.centerDocked,
       floatingActionButton: new FloatingActionButton(
