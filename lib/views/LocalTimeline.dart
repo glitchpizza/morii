@@ -22,8 +22,8 @@ Future<List<Post>> fetchPosts() async {
   }).where((post) => post.mediaTypes == 'image' && !post.isSensitive).toList();
 }
 
-class PublicTimeline extends StatefulWidget {
-  PublicTimeline({Key key}) : super(key: key);
+class LocalTimeline extends StatefulWidget {
+  LocalTimeline({Key key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -35,10 +35,10 @@ class PublicTimeline extends StatefulWidget {
   // always marked "final".
 
   @override
-  _PublicTimelineState createState() => new _PublicTimelineState();
+  _LocalTimelineState createState() => new _LocalTimelineState();
 }
 
-class _PublicTimelineState extends State<PublicTimeline> {
+class _LocalTimelineState extends State<LocalTimeline> {
 
   @override
   Widget build(BuildContext context) {
