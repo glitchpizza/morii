@@ -3,10 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:morii/models/Post.dart';
+import 'package:morii/models/Status.dart';
 import 'package:morii/models/Account.dart';
 
-import 'package:morii/components/Timeline.dart';
 import 'package:morii/components/BottomNav.dart';
 
 final String accessToken = "ACCESS_TOKEN_HERE"; // TODO: Put this into an OAath flow

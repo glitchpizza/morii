@@ -3,23 +3,23 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:morii/models/Post.dart';
+import 'package:morii/models/Status.dart';
 
 import 'package:morii/components/Timeline.dart';
 import 'package:morii/components/BottomNav.dart';
 
 final String accessToken = "ACCESS_TOKEN_HERE"; // TODO: Put this into an OAath flow
 
-Future<List<Post>> fetchPosts() async {
+Future<List<Status>> fetchStatuses() async {
   final response =
       await http.get('https://mastodon.art/api/v1/timelines/public/?only_media=true&limit=40&local=true', headers: {
         "Authorization": "Bearer $accessToken"
       });
   final List<dynamic> responseJson = json.decode(response.body);
 
-  return responseJson.map((post) {
-    return new Post.fromJson(post);
-  }).where((post) => post.mediaTypes == 'image' && !post.isSensitive).toList();
+  return responseJson.map((status) {
+    return new Status.fromJson(status);
+  }).where((status) => status.mediaTypes == 'image' && !status.isSensitive).toList();
 }
 
 class LocalTimeline extends StatefulWidget {
@@ -51,7 +51,7 @@ class _LocalTimelineState extends State<LocalTimeline> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorDark,
       body: Center(
-        child: Timeline(posts: fetchPosts()) // Create a timeline with public TL posts
+        child: Timeline(statuses: fetchStatuses()) // Create a timeline with public TL posts
       ),
       bottomNavigationBar: BottomNav(),
       floatingActionButtonLocation: 

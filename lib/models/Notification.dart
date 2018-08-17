@@ -1,5 +1,5 @@
 import 'package:morii/models/Account.dart';
-import 'package:morii/models/Post.dart';
+import 'package:morii/models/Status.dart';
 
 enum NotificationType { // TODO: look up how to index dart enums by string
   mention,
@@ -13,14 +13,14 @@ class Notification {
   final String type; // TODO: refactor to NotificationType eventually™
   final DateTime createdAt;
   final Account account;
-  final Post post;
+  final Status status;
 
   Notification({
     this.id,
     this.type,
     this.createdAt,
     this.account,
-    this.post
+    this.status
   });
 
   factory Notification.fromJson(Map<String, dynamic> json) {
@@ -29,7 +29,7 @@ class Notification {
       type: json['type'],
       createdAt: DateTime.parse(json['created_at']),
       account: Account.fromJson(json['account']), // TODO: figure out if this call works
-      post: Post.fromJson(json['status']) // TODO: figure out if this call works
+      status: Status.fromJson(json['status']) // TODO: figure out if this call works
     );
   }
 

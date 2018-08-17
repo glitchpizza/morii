@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'package:morii/models/Post.dart';
+import 'package:morii/models/Status.dart';
 import 'package:morii/components/FeedImage.dart';
 
 
@@ -12,21 +12,21 @@ class Timeline extends StatelessWidget {
    * fairly display-based component.
    */
 
-  final Future<List<Post>> posts;
+  final Future<List<Status>> statuses;
 
-  Timeline({this.posts});
+  Timeline({this.statuses});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Post>>(
-          future: posts,
+    return FutureBuilder<List<Status>>(
+          future: statuses,
           builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView(
                   padding: EdgeInsetsDirectional.only(bottom: 64.0, top: 24.0), // To prevent weirdness with the bottom bar and transparent status bar
-                  children: snapshot.data.map((post) {
+                  children: snapshot.data.map((status) {
                     // Create a FeedImage widget for every status in the snapshot
-                    return FeedImage(post: post);
+                    return FeedImage(status: status);
                   }).toList()
                 );
               } else if (snapshot.hasError) {
