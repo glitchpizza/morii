@@ -55,11 +55,15 @@ class FeedImageState extends State<FeedImage> {
         color: Theme.of(context).primaryColorLight,
         child: Container(
             width: MediaQuery.of(context).size.width,
-            child: Wrap(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget> [
-                Text(
-                  username,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4.0),
+                  child: Text(
+                    username,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
                 RichText(
                   text: TextSpan(
