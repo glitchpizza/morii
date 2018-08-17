@@ -1,4 +1,7 @@
 import 'package:morii/models/Account.dart';
+import 'package:morii/models/Mention.dart';
+import 'package:morii/models/Tag.dart';
+
 class Status {
   // TODO: add visibility enum
   final Account account;
@@ -6,6 +9,8 @@ class Status {
   final String mediaTypes; // TODO: add support for multiple attachments
   final String caption;
   final DateTime createdAt;
+  final List<Mention> mentions;
+  final List<Tag> tags;
   final bool isFavourited;
   final bool isReblogged;
   final bool isMuted;
@@ -17,6 +22,8 @@ class Status {
     this.mediaTypes,
     this.caption,
     this.createdAt,
+    this.mentions,
+    this.tags,
     this.isSensitive,
     this.isFavourited,
     this.isReblogged,
@@ -33,12 +40,13 @@ class Status {
       mediaUrls: json['media_attachments'][0]['url'], // TODO: Change this to support multiple media urls
       mediaTypes: json['media_attachments'][0]['type'], // TODO: Change this to support multiple media urls
       createdAt: DateTime.parse(json['created_at']),
+      mentions: json['mentions'].map((mention) => Mention.fromJson(mention)),
+      tags: json['tags'].map((tag) => Tag.fromJson(tag)),
       account: Account.fromJson(json['account']), // TODO: should this just be Account(json['account'])?
       isSensitive: json['sensitive'],
       isFavourited: json['favourited'],
       isReblogged: json['reblogged'],
       isMuted: json['muted'],
-      // TODO: Add Mentions and Tags to Status model
     );
   }
 
