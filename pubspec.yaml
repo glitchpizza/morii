@@ -56,6 +56,16 @@ flutter:
           style: italic
         - asset: fonts/SourceSansPro-SemiBold.ttf
           weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-Regular.ttf
+        - asset: fonts/Montserrat-Italic.ttf
+          style: italic
+        - asset: fonts/Montserrat-SemiBold.ttf
+          weight: 700
+    - family: Rachel
+      fonts:
+        - asset: fonts/Rachel.ttf
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
