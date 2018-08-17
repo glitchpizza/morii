@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:morii/models/Status.dart';
 import 'package:morii/components/FeedImage.dart';
+import 'package:morii/components/ErrorDisplay.dart';
 
 
 class Timeline extends StatelessWidget {
@@ -31,7 +32,7 @@ class Timeline extends StatelessWidget {
                 );
               } else if (snapshot.hasError) {
                 // TODO: handle errors in a more user-friendly way
-                return Text("${snapshot.error}");
+                return ErrorDisplay();
               }
 
               // By default, show a loading spinner
