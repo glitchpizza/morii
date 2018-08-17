@@ -40,8 +40,7 @@ class Status {
       mediaUrls: json['media_attachments'][0]['url'], // TODO: Change this to support multiple media urls
       mediaTypes: json['media_attachments'][0]['type'], // TODO: Change this to support multiple media urls
       createdAt: DateTime.parse(json['created_at']),
-      mentions: json['mentions'].map((mention) => Mention.fromJson(mention)),
-      tags: json['tags'].map((tag) => Tag.fromJson(tag)),
+      // TODO: Find a way to get list of Tag, Mention objects from json data
       account: Account.fromJson(json['account']), // TODO: should this just be Account(json['account'])?
       isSensitive: json['sensitive'],
       isFavourited: json['favourited'],
