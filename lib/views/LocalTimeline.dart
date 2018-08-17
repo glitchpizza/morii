@@ -57,6 +57,8 @@ class _LocalTimelineState extends State<LocalTimeline> {
       floatingActionButtonLocation: 
         FloatingActionButtonLocation.centerDocked,
       floatingActionButton: new FloatingActionButton(
+        backgroundColor: Color(0xFFF23438),
+        foregroundColor: Colors.white,
         onPressed: (){},
         tooltip: 'New Post',
         child: new Icon(Icons.camera_alt),

@@ -7,7 +7,7 @@ final ThemeData lightTheme = new ThemeData(
       accentColor: Colors.black,
       brightness: Brightness.light,
       iconTheme: new IconThemeData(
-        color: Colors.blueGrey[900]
+        color: Colors.black
       ),
       fontFamily: 'Montserrat'
     );
@@ -20,7 +20,7 @@ final ThemeData darkTheme = new ThemeData(
       brightness: Brightness.dark,
       iconTheme: new IconThemeData(
         color: Colors.white
-      )
+      ),
     );
 
   final ThemeData oledTheme = new ThemeData(
@@ -31,5 +31,6 @@ final ThemeData darkTheme = new ThemeData(
       brightness: Brightness.dark,
       iconTheme: new IconThemeData(
         color: Colors.white
-      )
+      ),
+      fontFamily: 'Montserrat'
   );
