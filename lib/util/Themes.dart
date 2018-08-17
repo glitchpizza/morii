@@ -9,7 +9,7 @@ final ThemeData lightTheme = new ThemeData(
       iconTheme: new IconThemeData(
         color: Colors.blueGrey[900]
       ),
-      fontFamily: 'Source Sans Pro'
+      fontFamily: 'Montserrat'
     );
 
 final ThemeData darkTheme = new ThemeData(
