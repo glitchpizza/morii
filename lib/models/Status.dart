@@ -1,5 +1,5 @@
 import 'package:morii/models/Account.dart';
-class Post {
+class Status {
   // TODO: add visibility enum
   final Account account;
   final String mediaUrls; // TODO: add support for multiple attachments
@@ -11,7 +11,7 @@ class Post {
   final bool isMuted;
   final bool isSensitive;
 
-  Post({
+  Status({
     this.account,
     this.mediaUrls,
     this.mediaTypes,
@@ -23,12 +23,12 @@ class Post {
     this.isMuted
   });
 
-  factory Post.fromJson(Map<String, dynamic> json) { // This takes a full Mastodon/PixelFed Status entity
+  factory Status.fromJson(Map<String, dynamic> json) { // This takes a full Mastodon/PixelFed Status entity
     if (json['account']['username'] == null) {
       print('BAD STATUS.');
       print(json['account']);
     }
-    return new Post(
+    return new Status(
       caption: json['content'],
       mediaUrls: json['media_attachments'][0]['url'], // TODO: Change this to support multiple media urls
       mediaTypes: json['media_attachments'][0]['type'], // TODO: Change this to support multiple media urls
@@ -38,7 +38,7 @@ class Post {
       isFavourited: json['favourited'],
       isReblogged: json['reblogged'],
       isMuted: json['muted'],
-      // TODO: Add Mentions and Tags to Post model
+      // TODO: Add Mentions and Tags to Status model
     );
   }
 
