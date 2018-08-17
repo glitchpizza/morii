@@ -32,7 +32,7 @@ class Timeline extends StatelessWidget {
                 );
               } else if (snapshot.hasError) {
                 // TODO: handle errors in a more user-friendly way
-                return ErrorDisplay();
+                return ErrorDisplay(error: snapshot.error);
               }
 
               // By default, show a loading spinner

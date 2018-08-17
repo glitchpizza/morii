@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ErrorDisplay extends StatelessWidget {
+  final Object error;
+  final List<String> quips = [
+    "oops.",
+    "aw beans.",
+    "yikes."
+  ];
+
+  ErrorDisplay({this.error});
+
   @override
   Widget build(BuildContext context) {
     return  Center(
@@ -8,16 +17,16 @@ class ErrorDisplay extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(bottom: 20.0),
-            child: Text('oops.',
-              style: TextStyle(
-                fontFamily: 'Rachel',
-                fontSize: 80.0,
-                color: Color(0xFF0077FF),
+            Padding(
+              padding: EdgeInsets.only(bottom: 20.0),
+              child: Text((quips..shuffle()).first,
+                style: TextStyle(
+                  fontFamily: 'Rachel',
+                  fontSize: 60.0, // TODO: Auto-sizing this based on text width?
+                  color: Color(0xFF0077FF),
+                ),
               ),
             ),
-          ),
           Text('A network error occurred.', style: TextStyle(
             fontSize: 20.0
           )),
