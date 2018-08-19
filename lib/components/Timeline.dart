@@ -20,6 +20,7 @@ class Timeline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: investigate using a StreamBuilder here to allow RefreshIndicator to work
+    // e.g. https://blog.khophi.co/using-refreshindicator-with-flutter-streambuilder/
     return FutureBuilder<List<Status>>(
           future: statuses,
           builder: (context, snapshot) {
