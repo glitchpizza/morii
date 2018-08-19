@@ -36,7 +36,22 @@ class Timeline extends StatelessWidget {
               }
 
               // By default, show a loading spinner
-              return CircularProgressIndicator(); 
+              // TODO: put this into its own fancy widget
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20.0),
+                    child: Text('Loading...',
+                      style: TextStyle(
+                        fontFamily: 'Rachel',
+                        fontSize: 60.0, // TODO: Auto-sizing this based on text width?
+                      ),
+                    ),
+                  ),
+                  CircularProgressIndicator()
+                ],
+              ); 
             },
         );
   }
