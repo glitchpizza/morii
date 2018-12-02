@@ -6,7 +6,6 @@ class BottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
         color: Theme.of(context).primaryColor,
-        hasNotch: true,
         child: new Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
