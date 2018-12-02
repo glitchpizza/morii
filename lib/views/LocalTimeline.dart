@@ -93,7 +93,6 @@ class _LocalTimelineState extends State<LocalTimeline> {
         onPressed: (){},
         tooltip: 'New Post',
         child: new Icon(Icons.camera_alt),
-        notchMargin: 4.0,
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
